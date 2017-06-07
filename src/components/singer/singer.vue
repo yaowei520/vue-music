@@ -1,7 +1,9 @@
 <template>
   <div class="singer" ref="singer">
     <list-view :data="singerList"></list-view>
-    <loading v-if="!singerList.length"></loading>
+     <div class="loading-container" v-if='!singerList.length' >
+        <loading title="正在加载...."></loading>
+     </div>
   </div>
 </template>
 
@@ -9,7 +11,6 @@
   import loading from "base/loading/loading"
   import getSinger from "api/singer"
   import listView from "base/listview/listview"
-
   const HOST_NAME="热门"
   const SINGER_LENGTH=10
   export default {
@@ -90,4 +91,9 @@
     top: 88px
     bottom: 0
     width: 100%
+   .loading-container
+      position: absolute
+      width: 100%
+      top: 50%
+      transform: translateY(-50%)
 </style>

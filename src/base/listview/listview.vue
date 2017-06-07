@@ -5,7 +5,7 @@
             <h2 class="list-group-title">{{group.title}}</h2>
             <ul>
               <li v-for="item in group.items" class="list-group-item">
-                <img :src="item.Fsinger_img" class="avatar">
+                <img v-lazy="item.Fsinger_img" class="avatar">
                 <span class="name">{{item.Fsinger_name}}</span>
               </li>
             </ul>
@@ -33,7 +33,7 @@
     methods: {
     },
     components:{
-      scroll
+      Scroll
     }
   }
 
