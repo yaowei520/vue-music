@@ -11,6 +11,13 @@
             </ul>
         </li>
       </ul>
+      <div class="list-shortcut" @touchstart="onShortcutTouchStart">
+        <ul>
+          <li v-for="(item,index) in  shortList" class="item" :data-index="index">
+            {{item}}
+          </li>
+        </ul>
+      </div>
   </scroll>
 </template>
 <script type="text/ecmascript-6">
@@ -28,12 +35,22 @@
     },
     name:"listview",
     created() {
-      
+    
     },
     methods: {
+      onShortcutTouchStart(e){
+        let index = $(e.target).data("index")
+      }
     },
     components:{
       Scroll
+    },
+    computed: {
+      shortList(){
+        return this.data.map((group) => {
+          return group.title.substr(0, 1)
+        })
+      }
     }
   }
 
